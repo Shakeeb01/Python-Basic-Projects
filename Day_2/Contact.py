@@ -5,7 +5,7 @@ def Add_Contact():
     Name = input("Enter Full Name : ")
     Number = input("Enter the Mobile Number : ")
     
-    New_Contact = f"'{Name} => {Number}'"
+    New_Contact = f":'{Name} => {Number}'"
     All_Contacts.append(New_Contact)
     print("Contact Added Successfully!")
 
