@@ -1,33 +1,94 @@
-class BankAccount:
-    def __init__(self,AccountName,InitalBalance = 0):
-        self.Name = AccountName
-        self.Balance = InitalBalance
-        print("\nAccount Created :")
-        print(f"'{self.Name}' \nAccount Balance ${self.Balance:.2f}")
-        
-    # this will add the balance
-    def deposit(self,depositAmount):
-        self.Balance = self.Balance + depositAmount
-        print("\nDeposit Successfull!")
-        print(f"You have deposit ${depositAmount:.2f}")
-        print(f"Your New balance is ${self.Balance:.2f}\n")
-    # this is to withdraw balance from your account. 
-    def withdraw(self,withdrawAmount):
-        if withdrawAmount <= self.Balance:
-            self.Balance = self.Balance - withdrawAmount
-            print("Withdraw successfull!")
-            print(f"Your New balance is ${self.Balance:.2f}\n")
+import time
+User_Name = input("Enter Your Name: ")   # User Name.
+Account_Balance = 0    # User Account's Balance.
+Pin = int(input("Enter Your Pin: "))    # User Account pin.
+
+# this is to deposit.
+def Deposit_Money():
+    global Account_Balance
+    user_pin = int(input("Enter Your Pin: "))
+    if user_pin == Pin:
+        Deposit_Amount = int(input("Enter your amount that you want to deposit: $"))
+        Account_Balance += Deposit_Amount
+        print(f"Deposit of {Deposit_Amount} Successfull!")
+        print(f"Your total balance is ${Account_Balance}")
+    else:
+        print("Pin is incorrect.Please Try Again.")
+
+
+# This is withdraw.
+def withdraw_Money():
+    global Account_Balance
+    user_pin = int(input("Enter Your Pin: "))
+    if user_pin == Pin:
+        Withdraw_Amount = int(input("Enter your amount that you want to withdraw: $"))
+        if Account_Balance == 0:
+            print("You account shows ZERO balance.")
+        elif Withdraw_Amount >  Account_Balance:
+            print("Insufficient Balance.")
         else:
-            print("Widthdraw unsuccessfull!")
-            print(f"Sorry you dont have enough balance to withdraw ${withdrawAmount:.2f}")    
-            print(f"You Balance is ${self.Balance:.2f}\n")
+            Account_Balance -= Withdraw_Amount
+            print(f"Withdraw of {Withdraw_Amount} Successfull!")
+            print(f"Your remaining balance is ${Account_Balance}")
+    else:
+        print("Pin is incorrect.Please Try Again.")
+ 
+# this is to check balance.
+def check_balance():
+    user_pin = int(input("Enter Your Pin: "))
+    if user_pin == Pin:
+        if Account_Balance == 0:
+            print("You account shows ZERO balance.")
+        else:
+            print(f"Your total balance is ${Account_Balance}")
+    else:
+        print("Pin is incorrect.Please Try Again.")  
+ 
+ 
+# this is get loan.
+def get_loan():
+    global Account_Balance
+    user_pin = int(input("Enter Your Pin: "))
+    if user_pin == Pin:
+        Loan_Amount = int(input("Enter the amount of for Loan: $"))
+        Account_Balance =+ Loan_Amount
+        print("Loan Added Sucessfully!")
+    else:
+        print("Pin is incorrect.Please Try Again.")
+
+
+
+
+
+def main():
+    while True:
+        print("\n-: Your Pocket Bank :- \n")
+        print("1. Deppsit Money")
+        print("2. Withdraw Money")
+        print("3. Check Balance")
+        print("4. Get Loan")
+        print("5. Exit \n")
             
-
-# First Account
-Account_1 = BankAccount("Shakeeb ur Rehman")
-Account_1.deposit(3000)
-
-# Second Account
-
-Account_2 = BankAccount("Crictiano Ronaldo")
-Account_2.deposit(10000)
+        User_Choice = input("What do you want to do? ")
+        if User_Choice == '1':
+            Deposit_Money()
+        elif User_Choice == '2':
+            withdraw_Money()    
+        elif User_Choice == '3':
+            check_balance()    
+        elif User_Choice == '4':
+            get_loan()
+        elif User_Choice == '5':
+            user_pin = int(input("Enter you pin:"))
+            if user_pin == Pin:
+                print("Exiting.....") 
+                time.sleep(3)
+                print("Good bye!")   
+                break
+            else:
+                print("Pin is incorrect.Please Try Again.")
+        else:
+            print("Invalid Option.Try Again.")
+            
+            
+main()    
