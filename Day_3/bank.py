@@ -10,7 +10,7 @@ def Deposit_Money():
     if user_pin == Pin:
         Deposit_Amount = int(input("Enter your amount that you want to deposit: $"))
         Account_Balance += Deposit_Amount
-        print(f"Deposit of {Deposit_Amount} Successfull!")
+        print(f"Deposit of ${Deposit_Amount} Successfull!")
         print(f"Your total balance is ${Account_Balance}")
     else:
         print("Pin is incorrect.Please Try Again.")
@@ -28,7 +28,7 @@ def withdraw_Money():
             print("Insufficient Balance.")
         else:
             Account_Balance -= Withdraw_Amount
-            print(f"Withdraw of {Withdraw_Amount} Successfull!")
+            print(f"Withdraw of ${Withdraw_Amount} Successfull!")
             print(f"Your remaining balance is ${Account_Balance}")
     else:
         print("Pin is incorrect.Please Try Again.")
@@ -50,9 +50,12 @@ def get_loan():
     global Account_Balance
     user_pin = int(input("Enter Your Pin: "))
     if user_pin == Pin:
-        Loan_Amount = int(input("Enter the amount of for Loan: $"))
-        Account_Balance =+ Loan_Amount
-        print("Loan Added Sucessfully!")
+        if Account_Balance < 50000:
+            Loan_Amount = int(input("Enter the amount of for Loan: $"))
+            Account_Balance += Loan_Amount
+            print(f" ${Loan_Amount} Loan Added Sucessfully!")
+        else:
+            print("You have enough balance.You are not eligible for loan.")    
     else:
         print("Pin is incorrect.Please Try Again.")
 
