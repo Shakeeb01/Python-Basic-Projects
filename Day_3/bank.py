@@ -1,7 +1,8 @@
 import time
-User_Name = input("Enter Your Name: ")   # User Name.
+User_Name = input("Enter Your Name: ") # User Name.
+Pin = int(input("Enter Your Pin: "))  # User Account pin.
 Account_Balance = 0    # User Account's Balance.
-Pin = int(input("Enter Your Pin: "))    # User Account pin.
+
 
 # this is to deposit.
 def Deposit_Money():
@@ -94,4 +95,9 @@ def main():
             print("Invalid Option.Try Again.")
             
             
-main()    
+
+
+
+    
+main()
+
